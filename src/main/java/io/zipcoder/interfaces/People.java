@@ -3,7 +3,7 @@ package io.zipcoder.interfaces;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class People implements Iterable{
+public abstract class People<E extends Person> implements Iterable{
     private ArrayList<Person> personList = new ArrayList();
 
     void addPerson(Person person){
@@ -45,7 +45,6 @@ public class People implements Iterable{
         return personList.toArray();
     }
 
-    @Override
     public Iterator iterator() {
         return personList.iterator();
     }

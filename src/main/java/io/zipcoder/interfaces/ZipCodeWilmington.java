@@ -18,12 +18,24 @@ class ZipCodeWilmington {
     }
 
     public void hostLecture(Teacher teacher, double numberOfHours){
-        teacher.lecture((Learner[])students.toArray(),numberOfHours);
+        Learner[] dudes = new Learner[students.personCount()];
+        int i = 0;
+        for (Object student : students){
+            dudes[i] = (Learner) student;
+            i++;
+        }
+        teacher.lecture(dudes,numberOfHours);
     }
 
     public void hostLecture(long id, double numberOfHours){
         Instructor teacher = (Instructor)instructors.findById(id);
-        teacher.lecture((Learner[])students.toArray(),numberOfHours);
+        Learner[] dudes = new Learner[students.personCount()];
+        int i = 0;
+        for (Object student : students){
+            dudes[i] = (Learner) student;
+            i++;
+        }
+        teacher.lecture(dudes,numberOfHours);
     }
 
     public Map<Student, Double> getStudyMap(){
@@ -31,6 +43,7 @@ class ZipCodeWilmington {
         for (Student student: (Iterable<Student>) students){
             studentMap.put(student, student.getTotalStudyTime());
         }return studentMap;
-
     }
+
+
 }
